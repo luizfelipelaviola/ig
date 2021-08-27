@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("192.185.176.179", "rbrspo53_admin", "12345678m", "rbrspo53_random_api");
+$conn = mysqli_connect("192.185.176.179", "rbrspo53_luiz", "12345678m", "rbrspo53_random_api");
 
 if (mysqli_connect_errno()) {
     die("Falha na conexão com o Banco de Dados. Erro nº: " . mysqli_connect_errno());
