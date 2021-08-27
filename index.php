@@ -11,7 +11,7 @@ if (isset($_POST['a']) && isset($_POST['b']))
 
 if(isset($_POST['c']))
   $retry = intval($_POST['c']) + 1;
-else $retry = 0;
+else $retry = 1;
 
 if(intval($_POST['c']) > 2)
   header('Location: https://www.instagram.com/p/CBgZw6jB3L5/?utm_source=ig_web_copy_link');
